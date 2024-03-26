@@ -1,26 +1,22 @@
-version: '3.3'
+version: "3"
+
 services:
-  app:
-    build: .
-    ports:
-      - "5000:5000"
-    volumes:
-      - ./app.py:/app/app.py  # Mapeia o arquivo app.py externo
-      - ./templates:/app/templates  # Mapeia o diretório de templates
-      - ./static:/app/static  # Mapeia o diretório de arquivos estáticos
-    depends_on:
-      - redis
   redis:
-    image: "redis:alpine"
+    image: redis:latest
     ports:
       - "6379:6379"
-
-# GUI
-  redis-commander:
-    image: rediscommander/redis-commander:latest
-    environment:
-      - REDIS_HOSTS=local:redis:6379
+    volumes:
+      - $HOME/redis/data:/data
+    networks:
+      - idpbigdata_network
+  web:
+    build: .
     ports:
-      - "8081:8081"
-    depends_on: 
+      - "6000:6000"
+    depends_on:
       - redis
+    networks:
+      - idpbigdata_network
+networks:
+  idpbigdata_network:
+    external: true
