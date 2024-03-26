@@ -1,19 +1,31 @@
-version: '3.3'
+version: "3.3"
 
 services:
   jupyter-spark:
+    user: "root"
+    environment:
+      JUPTER_ENABLE_LAB: 1
+      CHOWN_HOME: "yes"
+      CHOWN_HOME_OPTS: "-R"
+      NB_GUID: 1000
+      NB_USER: ${USER}
     build:
       context: .
     ports:
-      - "8888:8888"  # Porta padrão da interface web do Jupyter Notebook
-      - "4040:4040"  # Porta padrão da interface web do Spark
+      - "8888:8888" # Porta padrão da interface web do Jupyter Notebook
+      - "4040:4040" # Porta padrão da interface web do Spark
     volumes:
       - ./notebooks:/home/jovyan/work
       - ./data:/home/jovyan/data
       - ./config:/home/jovyan/.jupyter
+    networks:
+      - idpbigdata_network
 
 volumes:
   notebooks:
   data:
-  config:          
+  config:
 
+networks:
+  idpbigdata_network:
+    external: true
