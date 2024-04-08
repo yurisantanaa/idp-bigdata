@@ -2,13 +2,15 @@ version: "3.3"
 
 services:
   jupyter-spark:
-    user: "root"
+    #user: "root"
     environment:
       JUPTER_ENABLE_LAB: 1
-      CHOWN_HOME: "yes"
-      CHOWN_HOME_OPTS: "-R"
-      NB_GUID: 1000
-      NB_USER: ${USER}
+      #CHOWN_HOME: "yes"
+      #CHOWN_HOME_OPTS: "-R"
+      #NB_GUID: 1000
+      #NB_UID: 501
+      #GRANT_SUDO: yes
+      #NB_USER: ${USER}
     build:
       context: .
     ports:
