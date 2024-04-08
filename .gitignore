@@ -98,3 +98,5 @@ build/
 redis/data/dump.rdb
 
 mongodb/datasets/
+*/notebooks
+*/config
