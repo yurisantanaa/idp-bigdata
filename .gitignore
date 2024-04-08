@@ -96,3 +96,5 @@ build/
 .dropbox.attr
 .dropbox.attrs
 redis/data/dump.rdb
+
+mongodb/datasets/
