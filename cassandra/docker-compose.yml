@@ -1,4 +1,5 @@
-version: '3.3'
+version: "3.3"
+
 services:
   cassandra:
     image: cassandra:latest
@@ -8,6 +9,9 @@ services:
     environment:
       - MAX_HEAP_SIZE=256M
       - HEAP_NEWSIZE=100M
+    networks:
+      - idpbigdata_network
+
 
   cassandra-web:
     image: strate/cassandra-web
@@ -20,7 +24,9 @@ services:
     depends_on:
       - cassandra
     networks:
-      - cassandra-net
+      - idpbigdata_network
 
 networks:
-  cassandra-net:
+  idpbigdata_network:
+    driver: bridge
+    name: idpbigdata_network
