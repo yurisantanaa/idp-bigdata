@@ -12,7 +12,6 @@ services:
     networks:
       - idpbigdata_network
 
-
   cassandra-web:
     image: ipushc/cassandra-web
     container_name: cassandra-web-container
@@ -21,6 +20,9 @@ services:
     volumes:
       - ./wait-for-it.sh:/wait-for-it.sh
     environment:
+      - HOST_PORT=:80
+      - READ_ONLY=false
+      - CASSANDRA_HOST=cassandra
       - HOST_PORT=:80
       - READ_ONLY=false
       - CASSANDRA_HOST=cassandra

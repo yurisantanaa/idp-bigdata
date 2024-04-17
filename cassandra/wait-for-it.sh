@@ -1,6 +1,6 @@
 #!/bin/sh
 # wait-for-it.sh
-# Aguarda atÈ que um host/porta esteja disponÌvel antes de continuar com um comando.
+# Aguarda at√© que um host/porta esteja dispon√≠vel antes de continuar com um comando.
 
 set -e
 
@@ -14,5 +14,6 @@ until nc -z -v -w30 "$host" "$port"; do
   sleep 2
 done
 
-echo "$host:$port est· disponÌvel, iniciando comando: $cmd"
+echo "$host:$port est√° dispon√≠vel, iniciando comando: $cmd"
 exec $cmd
+
