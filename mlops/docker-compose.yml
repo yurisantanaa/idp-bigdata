@@ -3,12 +3,14 @@ services:
   app:
     build: .
     ports:
-      - "5000:5000"
+      - "8500:5000"
     volumes:
       - ./app.py:/app/app.py  # Mapeia o arquivo app.py externo
       - ./templates:/app/templates  # Mapeia o diretório de templates
       - ./static:/app/static  # Mapeia o diretório de arquivos estáticos
       - ./models:/app/models  # Mapeia a pasta models
+    networks:
+      - idpbigdata_network
         #    depends_on:
         #      - redis
         #  redis:
@@ -25,3 +27,9 @@ services:
 #      - "8081:8081"
 #    depends_on: 
 #      - redis
+
+
+networks:
+  idpbigdata_network:
+    driver: bridge
+    name: idpbigdata_network
