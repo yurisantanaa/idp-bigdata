@@ -97,9 +97,10 @@ build/
 .dropbox.attrs
 redis/data/dump.rdb
 
-./av1/config
-./av1/data
-./mongodb/datasets
-./redis/data/dump.rdb
-./jupyter-spark/config/
+/av1/config
+/av1/data
+/av1/notebooks/.ipynb_checkpoints
+/mongodb/datasets
+/redis/data/dump.rdb
+/jupyter-spark/config/
 
