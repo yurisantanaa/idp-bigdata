@@ -99,7 +99,6 @@ redis/data/dump.rdb
 
 /av1/config
 /av1/data
-/av1/notebooks/.ipynb_checkpoints
 /mongodb/datasets
 /redis/data/dump.rdb
 /jupyter-spark/config/
