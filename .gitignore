@@ -97,15 +97,9 @@ build/
 .dropbox.attrs
 redis/data/dump.rdb
 
-<<<<<<< HEAD
 ./av1/config
 ./av1/data
 ./mongodb/datasets
 ./redis/data/dump.rdb
 ./jupyter-spark/config/
 
-=======
-mongodb/datasets/
-jupyter-spark/notebooks/
-jupyter-spark/config/
->>>>>>> parent of 176577b (comecando av1)
