@@ -11,11 +11,11 @@ services:
       - 7687:7687
     restart: on-failure
     networks:
-        - neo4j_go_net
+        - idpbigdata_network
     command: neo4j
 
 networks:
-  neo4j_go_net:
+  idpbigdata_network:
     driver: bridge
 
 volumes:

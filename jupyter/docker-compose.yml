@@ -11,9 +11,14 @@ services:
       - ./notebooks:/home/jovyan/work
       - ./data:/home/jovyan/data
       - ./config:/home/jovyan/.jupyter
+    networks:
+      - idpbigdata_network
 
 volumes:
   notebooks:
   data:
   config:          
 
+networks:
+  idpbigdata_network:
+    driver: bridge
