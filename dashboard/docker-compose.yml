@@ -9,7 +9,7 @@ services:
     ports:
       - "2181:2181"
     networks:
-      - mybridge
+      - idpbigdata_networks
 
   kafka1:
     image: confluentinc/cp-kafka:latest
@@ -28,7 +28,7 @@ services:
     volumes:
       - /var/lib/kafka/data
     networks:
-      - mybridge
+      - idpbigdata_networks
 
   kafka2:
     image: confluentinc/cp-kafka:latest
@@ -47,7 +47,7 @@ services:
     volumes:
       - /var/lib/kafka/data
     networks:
-      - mybridge
+      - idpbigdata_networks
 
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
@@ -66,7 +66,7 @@ services:
       # SPRING_SECURITY_USER_NAME: admin
       # SPRING_SECURITY_USER_PASSWORD: admin
     networks:
-      - mybridge
+      - idpbigdata_networks
 
   postgres:
     container_name: postgres_container
@@ -81,7 +81,7 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - mybridge
+      - idpbigdata_networks
   
   pgadmin:
     container_name: pgadmin_container
@@ -96,7 +96,7 @@ services:
     ports:
       - "${PGADMIN_PORT:-80}:80"
     networks:
-      - mybridge
+      - idpbigdata_networks
 
   grafana:
     image: grafana/grafana-enterprise
@@ -108,12 +108,12 @@ services:
       - ./grafana:/var/lib/grafana
       - ./grafana_imagens:/usr/share/grafana/public/img/andre
     networks:
-      - mybridge
+      - idpbigdata_networks
     environment:
       - GF_INSTALL_PLUGINS=dalvany-image-panel,yesoreyeram-boomtheme-panel
 
 networks:
-  mybridge:
-    name: mybridge
+  idpbigdata_networks:
+    name: idpbigdata_network
     external: true
     driver: bridge
