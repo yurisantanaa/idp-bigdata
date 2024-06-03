@@ -16,6 +16,7 @@ services:
 
 networks:
   idpbigdata_network:
+    name: idpbigdata_network
     driver: bridge
 
 volumes:
