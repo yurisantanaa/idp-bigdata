@@ -2,15 +2,15 @@ version: "3.3"
 
 services:
   jupyter-spark:
-    #user: "root"
+    user: "root"
     environment:
       JUPTER_ENABLE_LAB: 1
-      #CHOWN_HOME: "yes"
-      #CHOWN_HOME_OPTS: "-R"
-      #NB_GUID: 1000
-      #NB_UID: 501
-      #GRANT_SUDO: yes
-      #NB_USER: ${USER}
+      CHOWN_HOME: "yes"
+      CHOWN_HOME_OPTS: "-R"
+      NB_GUID: 1000
+      NB_UID: 501
+      GRANT_SUDO: yes
+      NB_USER: ${USER}
     build:
       context: .
     ports:
@@ -22,7 +22,7 @@ services:
       - ./config:/home/jovyan/.jupyter
 
     networks:
-      - mybridge # Nome da rede.
+      - idpbigdata_network # Nome da rede.
 
 volumes:
   notebooks:
@@ -30,6 +30,6 @@ volumes:
   config:
 
 networks:
-  mybridge: # Nome da rede indicada no serviço.
-    external: # Indica que a rede é externa e já foi criada anteriormente.
-      name: mybridge # Nome da rede externa que será usada.
+  idpbigdata_network: # Nome da rede indicada no serviço.
+    external: true # Indica que a rede é externa e já foi criada anteriormente.
+    name: idpbigdata_network # Nome da rede externa que será usada.
