@@ -30,5 +30,8 @@ RUN echo "jovyan ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/jovyan
 USER jovyan
 
 # Configure o diretório de trabalho padrão para os notebooks
+COPY requirements.txt /home/jovyan/work
 WORKDIR /home/jovyan/work
 
+RUN pip install -r requirements.txt
+RUN conda install -c conda-forge ipywidgets
