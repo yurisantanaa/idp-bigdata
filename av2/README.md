@@ -9,28 +9,23 @@ DESCRICAO DA ARQUITETURA:
     Desenvolvimento da Interface: Criação de uma interface interativa usando Streamlit, onde os usuários poderão visualizar as análises de sentimentos dos reviews.
 
 COMO TESTAR:
-
-    1.baixar db:
-        acessar https://www.kaggle.com/datasets/kieranpoc/steam-reviews/data
-        clicar download
-        descompactar o conteudo no diretorio data
-    2.Suba o docker:
+    1.Suba o docker:
         docker compose up -d
 
-    3.Importar o arquivo csv com os reviews da steam:
+    2.Importar o arquivo csv com os reviews da steam:
         docker exec -it mongo_service mongoimport --db Steam --collection Analise  --type csv --file datasets/all_reviews.csv --headerline --ignoreBlanks --username root --password mongo --authenticationDatabase admin
 
-    4.Crie os indices da coluna game e language:
+    3.Crie os indices da coluna game e language:
         docker exec -it mongo_service bash
         mongo -u root -p mongo
         use Steam
         db.Analise.createIndex({game:1})
         db.Analise.createIndex({language:1})
 
-    5.instale os requirements
+    4.instale os requirements
         pip install -r requirements.txt
 
-    6.acesse a interface streamlit
+    5.acesse a interface streamlit
         cd frontend
         streamlit run app.py
         acesse localhost:8051

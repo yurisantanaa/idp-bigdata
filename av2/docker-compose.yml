@@ -1,0 +1,37 @@
+version: "3.3"
+
+services:
+  streamlit-app:
+    #image: yurisantanaa/av2-frontend:latest
+    build:
+      context: . # Use o diretório atual como contexto para encontrar o Dockerfile
+    ports:
+      - "8501:8501" # Mapeie a porta do container para a porta do host
+    volumes:
+      - ./frontend:/app # Mapeie o arquivo app.py local diretamente para o diretório de trabalho no container
+      - ./data:/app/datasets
+    networks:
+      - idpbigdata_network
+
+  mongo:
+    image: yurisantanaa/av2-mongo:latest
+    #image: mongo:4.4-bionic
+    container_name: mongo_service
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/datasets
+    networks:
+      - idpbigdata_network
+
+volumes:
+  data:
+  frontend:
+
+networks:
+  idpbigdata_network:
+    driver: bridge
+    name: idpbigdata_network
